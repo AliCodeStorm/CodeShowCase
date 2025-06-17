@@ -1,5 +1,5 @@
 
-"use client"; // Recommended if you later add interactivity, though pure CSS animation doesn't strictly need it.
+"use client"; 
 
 import * as React from 'react';
 import { Bell } from 'lucide-react';

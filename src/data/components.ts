@@ -152,16 +152,6 @@ import { Terminal } from "lucide-react";
     category: 'Animated',
     preview: React.createElement(AnimatedStatCardPreview),
     code: `
-/*
-This is the code for the AnimatedStatCardPreview component.
-You can save this in a file like 'src/components/my-animated-stat-card.tsx'.
-
-Then import and use it in your page/component:
-import { AnimatedStatCardPreview } from '@/components/previews/animated-stat-card-preview'; // Or your custom path
-// In your component:
-// <AnimatedStatCardPreview />
-*/
-
 "use client";
 
 import * as React from 'react';
@@ -244,15 +234,15 @@ import { Label } from '@/components/ui/label';
       'div',
       { className: 'flex -space-x-2 overflow-hidden p-1' },
       React.createElement(Avatar, { className: "border-2 border-background shadow-md" },
-        React.createElement(AvatarImage, { src: "https://placehold.co/40x40.png", "data-ai-hint": "person face" }),
+        React.createElement(AvatarImage, { src: "https://placehold.co/40x40.png", }),
         React.createElement(AvatarFallback, null, "U1")
       ),
       React.createElement(Avatar, { className: "border-2 border-background shadow-md" },
-        React.createElement(AvatarImage, { src: "https://placehold.co/40x40.png", "data-ai-hint": "woman portrait" }),
+        React.createElement(AvatarImage, { src: "https://placehold.co/40x40.png", }),
         React.createElement(AvatarFallback, null, "U2")
       ),
       React.createElement(Avatar, { className: "border-2 border-background shadow-md" },
-        React.createElement(AvatarFallback, null, React.createElement(Smile, {className: "w-5 h-5"}))
+        React.createElement(AvatarFallback, null, React.createElement(Smile, { className: "w-5 h-5" }))
       ),
       React.createElement(Avatar, { className: "border-2 border-background shadow-md" },
         React.createElement(AvatarFallback, null, "+3")
@@ -332,13 +322,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
     category: 'Animated',
     preview: React.createElement(PulsingNotificationBellPreview),
     code: `
-/*
-Save this as a component, e.g., 'src/components/my-pulsing-bell.tsx'
-Then import and use it:
-import { PulsingNotificationBellPreview as MyPulsingBell } from '@/components/previews/pulsing-notification-bell-preview'; // Or your custom path
-// <MyPulsingBell />
-*/
-
 "use client";
 
 import * as React from 'react';
@@ -377,59 +360,59 @@ export function PulsingNotificationBellPreview() {
   },
   {
     id: 'hover-reveal-card',
-    name: 'Hover Reveal Card',
-    description: 'A card that reveals more information or an action button on hover. Uses Tailwind CSS for transitions.',
+    name: 'Sign Up Card',
+    description: 'A sign-up card that displays more details or a call-to-action button when hovered. Styled using Tailwind CSS for smooth transitions.',
     category: 'Animated',
     preview: React.createElement(HoverRevealCardPreview),
     code: `
-/*
-Save this as a component, e.g., 'src/components/my-hover-card.tsx'
-Then import and use it:
-import { HoverRevealCardPreview as MyHoverCard } from '@/components/previews/hover-reveal-card-preview'; // Or your custom path
-// <MyHoverCard />
-*/
-
 "use client";
 
-import * as React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from 'react';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
+import { Mail, Lock, User } from 'lucide-react';
 
 export function HoverRevealCardPreview() {
   return (
-    <Card className="group relative w-full max-w-sm overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl">
-      <CardHeader className="relative z-10 p-0">
-        <Image
-          src="https://placehold.co/400x250.png"
-          alt="Feature Image"
-          width={400}
-          height={250}
-          className="rounded-t-lg object-cover transition-transform duration-300 group-hover:scale-105"
-          data-ai-hint="abstract background"
-        />
-      </CardHeader>
-      <CardContent className="relative z-10 bg-background p-4">
-        <CardTitle className="mb-2 text-xl font-headline">Interactive Card</CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Hover over this card to see a cool reveal effect and an action button.
-        </p>
-      </CardContent>
-      {/* Overlay for reveal effect */}
-      <div className="absolute inset-0 z-20 flex translate-y-full flex-col items-center justify-center bg-gradient-to-t from-background/90 via-background/70 to-transparent p-6 text-center opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
-        <h3 className="mb-3 text-2xl font-bold text-primary">Discover More</h3>
-        <p className="mb-4 text-sm text-foreground">
-          Unlock exclusive features and dive deeper into what we offer.
-        </p>
-        <Button size="lg">
-          Get Started <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+    <div
+      className={cn(
+        "w-full max-w-md space-y-4 p-6 rounded-lg shadow-md bg-gradient-to-br from-gray-50 to-white border"
+      )}
+    >
+      <h2 className="text-2xl font-semibold text-center">Create an Account</h2>
+      <div className="space-y-2">
+        <div className="flex items-center space-x-2 border rounded-md px-3 py-2">
+          <User className="h-5 w-5 text-gray-500" />
+          <Input
+            type="text"
+            placeholder="Name"
+            className="border-none shadow-none focus-visible:ring-0"
+          />
+        </div>
+        <div className="flex items-center space-x-2 border rounded-md px-3 py-2">
+          <Mail className="h-5 w-5 text-gray-500" />
+          <Input
+            type="email"
+            placeholder="Email"
+            className="border-none shadow-none focus-visible:ring-0"
+          />
+        </div>
+        <div className="flex items-center space-x-2 border rounded-md px-3 py-2">
+          <Lock className="h-5 w-5 text-gray-500" />
+          <Input
+            type="password"
+            placeholder="Password"
+            className="border-none shadow-none focus-visible:ring-0"
+          />
+        </div>
       </div>
-    </Card>
+      <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Sign Up</Button>
+    </div>
   );
 }
+
     `.trim(),
-    keywords: ['card', 'hover', 'reveal', 'animated', 'interactive', 'ui effect'],
+    keywords: ['card', 'signup', 'icons', 'animated', 'interactive', 'ui effect'],
   },
 ];

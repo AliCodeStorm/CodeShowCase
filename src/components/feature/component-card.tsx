@@ -1,7 +1,7 @@
 import type { UiComponent } from '@/data/components';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { CodeBlock } from './code-block';
 import { Badge } from '@/components/ui/badge';
+import { CodeModalButton } from './codeWindow';
 
 interface ComponentCardProps {
   component: UiComponent;
@@ -14,15 +14,15 @@ export function ComponentCard({ component }: ComponentCardProps) {
         <CardTitle className="font-headline text-xl">{component.name}</CardTitle>
         <CardDescription>{component.description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow flex flex-col"> {/* Ensure CardContent can grow and manage flex children */}
+      <CardContent className="flex-grow flex flex-col">
         <div className="mb-4 rounded-md border border-dashed border-border p-6 min-h-[100px] flex items-center justify-center bg-background">
           {component.preview}
         </div>
-        {/* Fixed height container for the code block */}
-        <div className="relative h-[200px]">
-          {/* CodeBlock fills the container and handles its own scrolling and internal padding */}
+        <CodeModalButton componentName={component.name} code={component.code} />
+        {/* <div className="relative h-[200px]">
+          
           <CodeBlock code={component.code} className="absolute inset-0 overflow-y-auto" />
-        </div>
+        </div> */}
       </CardContent>
       {component.keywords && component.keywords.length > 0 && (
         <CardFooter className="flex flex-wrap gap-2">

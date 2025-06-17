@@ -10,7 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 interface CodeBlockProps {
   code: string;
   className?: string;
-  language?: string; // For potential future syntax highlighting
+  language?: string;
 }
 
 export function CodeBlock({ code, className, language = 'jsx' }: CodeBlockProps) {

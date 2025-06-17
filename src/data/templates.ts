@@ -6,7 +6,7 @@ export interface PageTemplate {
   previewImage: string;
   aiHint: string;
   tags: string[];
-  livePreviewUrl?: string; // Example: /templates/preview/modern-landing
+  livePreviewUrl?: string; 
 }
 
 export const pageTemplates: PageTemplate[] = [

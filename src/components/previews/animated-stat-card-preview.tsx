@@ -7,24 +7,24 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
 export function AnimatedStatCardPreview() {
-  const [currentDisplayCount, setCurrentDisplayCount] = useState(0); // This is what's displayed
+  const [currentDisplayCount, setCurrentDisplayCount] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
-  const targetCount = 75; // Example target number
+  const targetCount = 75;
 
   useEffect(() => {
-    setIsMounted(true); // Signal that the component has mounted on the client
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
     if (!isMounted) {
-      // Don't run the animation logic if not mounted or if already at target
+
       return;
     }
 
     if (currentDisplayCount < targetCount) {
       const timer = setTimeout(() => {
         setCurrentDisplayCount(prevCount => Math.min(prevCount + 1, targetCount));
-      }, 30); // Adjust speed as needed
+      }, 30);
       return () => clearTimeout(timer);
     }
   }, [currentDisplayCount, targetCount, isMounted]);

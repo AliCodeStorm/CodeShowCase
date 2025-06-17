@@ -88,13 +88,13 @@ const suggestUiFlow = ai.defineFlow(
     // And if suggestedCombinations are provided, suggestionType is 'combination'.
     // This is a basic validation, more complex logic can be added if needed.
     if (output.generatedCode && !['creation', 'edit'].includes(output.suggestionType)) {
-      output.suggestionType = output.existingComponentContext ? 'edit' : 'creation';
+      output.suggestionType = input.existingComponentContext ? 'edit' : 'creation';
     } else if (output.suggestedCombinations && output.suggestedCombinations.length > 0 && output.suggestionType !== 'combination') {
       output.suggestionType = 'combination';
     } else if (!output.suggestionType) {
       // Fallback if AI doesn't set it clearly
       if (output.generatedCode) {
-        output.suggestionType = output.existingComponentContext ? 'edit' : 'creation';
+        output.suggestionType = input.existingComponentContext ? 'edit' : 'creation';
       } else {
         output.suggestionType = 'combination';
       }
