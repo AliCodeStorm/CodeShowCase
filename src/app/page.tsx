@@ -110,7 +110,7 @@ export default function HomePage() {
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="https://placehold.co/600x400.png"
+              src="/pre-build.webp"
               alt="Template Preview Collage"
               layout="fill"
               objectFit="cover"
