@@ -6,7 +6,44 @@ import { ArrowRight, Cpu, LayoutDashboard, Rocket } from 'lucide-react';
 import { ComponentCard } from '@/components/feature/component-card';
 import { uiComponents } from '@/data/components';
 import Image from 'next/image';
+import {
+  Sparkles,
+  FileCode,
+  Pencil,
+  LayoutTemplate,
+  Sparkle,
+  Code2,
+  GaugeCircle,
+  MonitorPlay,
+} from "lucide-react";
 
+const iconMap = {
+  Sparkles,
+  FileCode,
+  Pencil,
+  LayoutTemplate,
+  Sparkle,
+  Code2,
+  GaugeCircle,
+  MonitorPlay,
+};
+
+type CardItem = {
+  title: string;
+  desc: string;
+  icon: keyof typeof iconMap;
+};
+
+const CardData: CardItem[] = [
+  { title: "Smart Suggestions", desc: "Suggesting optimal component combinations.", icon: "Sparkles" },
+  { title: "Code Generation", desc: "Generating code for new UI components.", icon: "FileCode" },
+  { title: "Component Editing", desc: "Modifying existing components with new code.", icon: "Pencil" },
+  { title: "Full Page Creation", desc: "Creating new pages with complete code and layouts.", icon: "LayoutTemplate" },
+  { title: "Next-Gen UI", desc: "Built with ShadCN, polished with Tailwind & animations.", icon: "Sparkle" },
+  { title: "Dev Friendly", desc: "Easily extendable, component-based layout, clean code.", icon: "Code2" },
+  { title: "Performance First", desc: "Blazing fast loading, minimal deps, scalable structure.", icon: "GaugeCircle" },
+  { title: "Real-time Preview", desc: "Instantly see component previews and code updates as you build.", icon: "MonitorPlay" },
+];
 const featuredComponents = uiComponents.slice(0, 3);
 
 export default function HomePage() {
@@ -38,8 +75,8 @@ export default function HomePage() {
       {/* Featured Components Section */}
       <section className="space-y-8">
         <div className="text-center">
-            <h2 className="font-headline text-3xl md:text-4xl font-semibold">Featured Components</h2>
-            <p className="mt-2 text-muted-foreground">Get a glimpse of our versatile UI components.</p>
+          <h2 className="font-headline text-3xl md:text-4xl font-semibold">Featured Components</h2>
+          <p className="mt-2 text-muted-foreground">Get a glimpse of our versatile UI components.</p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredComponents.map((component) => (
@@ -72,14 +109,14 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="relative aspect-video rounded-lg overflow-hidden shadow-xl">
-             <Image 
-                src="https://placehold.co/600x400.png" 
-                alt="Template Preview Collage" 
-                layout="fill"
-                objectFit="cover"
-                data-ai-hint="templates collage"
-                className="rounded-lg"
-              />
+            <Image
+              src="https://placehold.co/600x400.png"
+              alt="Template Preview Collage"
+              layout="fill"
+              objectFit="cover"
+              data-ai-hint="templates collage"
+              className="rounded-lg"
+            />
           </div>
         </div>
       </section>
@@ -92,6 +129,25 @@ export default function HomePage() {
           Not sure which components to use? Our AI-powered tool analyzes your needs
           and suggests the optimal combinations, complete with reasoning.
         </p>
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto relative z-20 mt-8">
+          {CardData.map((feature, i) => {
+            const Icon = iconMap[feature.icon as keyof typeof iconMap];
+            return (
+              <Card
+                key={i}
+                className="hover:scale-105 transition-transform shadow-md hover:shadow-xl bg-gradient-to-br from-white to-gray-50"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    {Icon && <Icon className="h-5 w-5 text-primary" />}
+                    <h3 className="text-lg font-semibold">{feature.title}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">{feature.desc}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
         <div className="mt-8">
           <Button asChild size="lg" variant="outline" className="shadow-sm hover:shadow-md transition-shadow">
             <Link href="/ai-suggester">
