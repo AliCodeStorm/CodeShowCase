@@ -96,9 +96,9 @@ export function AiSuggestionForm() {
               <MessageSquare className="h-4 w-4 mr-2" /> Suggestions
             </div>
             <ul className="list-disc pl-6 text-muted-foreground text-sm space-y-1">
-              {result?.suggestedCombinations?.map((item, i) => (
+                {result?.suggestedCombinations?.map((item: string, i: number) => (
                 <li key={i}>{item}</li>
-              ))}
+                ))}
             </ul>
           </div>
         )}

@@ -6,6 +6,8 @@ import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface CodeBlockProps {
   code: string;
@@ -46,8 +48,21 @@ export function CodeBlock({ code, className, language = 'jsx' }: CodeBlockProps)
       >
         {hasCopied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
       </Button>
-      <pre className="font-code text-sm overflow-x-auto whitespace-pre-wrap break-words py-2 text-foreground">
-        <code>{code}</code>
+      <pre className="font-mono text-sm py-2 text-foreground whitespace-pre overflow-x-auto">
+        <code>
+          <SyntaxHighlighter language="tsx"
+            style={oneLight}
+            wrapLongLines={true}
+            customStyle={{
+              fontSize: '0.9rem',
+              borderRadius: '0.5rem',
+              padding: '1rem',
+              //background: 'transparent',
+              margin: 0,
+            }}>
+            {code}
+          </SyntaxHighlighter>
+        </code>
       </pre>
     </div>
   );

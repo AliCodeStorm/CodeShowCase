@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Check, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneLight  } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface CodeModalButtonProps {
   componentName: string;
@@ -76,7 +78,7 @@ export const CodeModalButton: React.FC<CodeModalButtonProps> = ({
           <Button
             size="icon"
             variant="ghost"
-            className="absolute right-2 top-2 h-8 w-8 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+            className="absolute right-4 top-6 h-8 w-8 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
             onClick={onCopy}
             aria-label="Copy code"
           >
@@ -87,8 +89,20 @@ export const CodeModalButton: React.FC<CodeModalButtonProps> = ({
             )}
           </Button>
           <pre className="font-mono text-sm py-2 text-foreground whitespace-pre overflow-x-auto">
-
-            <code>{code}</code>
+            <code>
+              <SyntaxHighlighter language="tsx"
+                style={oneLight }
+                wrapLongLines={true}
+                customStyle={{
+                  fontSize: '0.9rem', 
+                  borderRadius: '0.5rem',
+                  padding: '1rem',
+                  //background: 'transparent',
+                  margin: 0,
+                }}>
+                {code}
+              </SyntaxHighlighter>
+            </code>
           </pre>
         </div>
       </DialogContent>
